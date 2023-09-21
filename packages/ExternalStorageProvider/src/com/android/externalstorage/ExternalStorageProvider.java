@@ -315,24 +315,24 @@ public class ExternalStorageProvider extends FileSystemProvider {
 
             // Block the root of the storage
             if (path.isEmpty()) {
-                return true;
+                return false;
             }
 
             // Block Download folder from tree
             if (TextUtils.equals(Environment.DIRECTORY_DOWNLOADS.toLowerCase(Locale.ROOT),
                     path.toLowerCase(Locale.ROOT))) {
-                return true;
+                return false;
             }
 
             // Block /Android
             if (TextUtils.equals(Environment.DIRECTORY_ANDROID.toLowerCase(Locale.ROOT),
                     path.toLowerCase(Locale.ROOT))) {
-                return true;
+                return false;
             }
 
             // Block /Android/data, /Android/obb, /Android/sandbox and sub dirs
             if (shouldHide(dir)) {
-                return true;
+                return false;
             }
 
             return false;
